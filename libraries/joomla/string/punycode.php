@@ -207,8 +207,8 @@ abstract class JStringPunycode
 	{
 		$explodedAddress = explode('@', $email);
 
-		// Not addressing UTF-8 user names
-		$newEmail = $explodedAddress[0];
+		// User address may be in UTF-8
+		$newEmail = static::toPunycode($explodedAddress[0]);
 
 		if (!empty($explodedAddress[1]))
 		{
